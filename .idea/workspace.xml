@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="13cda877-dc54-41cf-8eb0-17683b574912" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/intern.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logbook.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mentor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registercompany.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registeruser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/587037221-pink-purple-and-blue-wallpapers.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/CPUT_1-2000x1200-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gy6ortk8hedtjltnzvto.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dbconnection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectFunction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intern.php" beforeDir="false" afterPath="$PROJECT_DIR$/intern.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/logbook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mentor.php" beforeDir="false" afterPath="$PROJECT_DIR$/mentor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registercompany.php" beforeDir="false" afterPath="$PROJECT_DIR$/registercompany.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registeruser.php" beforeDir="false" afterPath="$PROJECT_DIR$/registeruser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +58,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\logbook\assets" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,12 +71,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603824140265</updated>
-      <workItem from="1603824142397" duration="2602000" />
+      <workItem from="1603824142397" duration="3542000" />
+      <workItem from="1603833953986" duration="4701000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="561" y="267" key="Github.ShareDialog" timestamp="1603824906745">
@@ -59,10 +99,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="541" y="74" key="Github.UntrackedFilesDialog/0.0.1366.738/-28.-900.1440.870@0.0.1366.738" timestamp="1603824945351" />
-    <state x="526" y="-542" key="NewPhpFileDialog" timestamp="1603829461115">
+    <state x="526" y="-542" key="NewPhpFileDialog" timestamp="1603835969943">
       <screen x="-28" y="-900" width="1440" height="870" />
     </state>
-    <state x="526" y="-542" key="NewPhpFileDialog/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1603829461115" />
+    <state x="526" y="-542" key="NewPhpFileDialog/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1603835969943" />
     <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1603825067456">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
