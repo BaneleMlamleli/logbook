@@ -21,33 +21,8 @@ if(isset($_POST["submit"])){
 </head>
 <body>
 <header>
-
+<!--no code as yet-->
 </header>
-<!-- Error alert message div-->
-<div id="alert_message"></div>
-<!-- Listen for the menu-toggle bar event then display or hide the responsive navigation bar -->
-<script>
-    $(document).ready(function () {
-        $('.menu-toggle').click(function () {
-            $('nav').toggle('active')
-        })
-    })
-</script>
-<!-- Back to top button -->
-<button onclick="topFunction()" class="fa fa-arrow-up" id="btnGoToTop" title="Go to top"></button>
-<!-- Section for all the information about you -->
-<!-- This is the Jumbotron below the navigation bar -->
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <div style="text-align: center; padding-top: 10%;">
-            <h1 class="display-5" data-text="Hi, I'm Banele Mlamleli">Hi, I'm Banele</h1>
-            <p class="p1">I am an avid programmer who simply loves spending hours tinkering with the code.</p>
-            <p class="p2">I am currently based in the Mother City - Cape Town.</p>
-        </div>
-    </div>
-</div>
-
-
 <!-- Section for your contact details. -->
 <section id="contacts">
     <h3 class="section-header-text card-subtitle mb-2 text-muted">Send me a direct message</h3>
