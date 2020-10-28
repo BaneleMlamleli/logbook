@@ -1,7 +1,7 @@
 <?php
 //20201027 - Added an alert pop-up message instead of a console printout when there is a successful or unsuccessful database connection - Banele
 
-include_once('projectFunction.php');
+include_once('project_function.php');
 
 $serverName = "";
 $username = "";
@@ -16,7 +16,6 @@ switch($_SERVER["SERVER_NAME"]){
         $password = "";
         $dbName = "logbook_db";
         break;
-
     case "lamp":
         $serverName = "lamp";
         $username = "root";

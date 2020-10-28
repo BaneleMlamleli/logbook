@@ -20,19 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13cda877-dc54-41cf-8eb0-17683b574912" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/587037221-pink-purple-and-blue-wallpapers.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/CPUT_1-2000x1200-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/gy6ortk8hedtjltnzvto.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbconnection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectFunction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/form_validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/register_company.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbconnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbconnection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intern.php" beforeDir="false" afterPath="$PROJECT_DIR$/intern.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/logbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mentor.php" beforeDir="false" afterPath="$PROJECT_DIR$/mentor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registercompany.php" beforeDir="false" afterPath="$PROJECT_DIR$/registercompany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registeruser.php" beforeDir="false" afterPath="$PROJECT_DIR$/registeruser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project_function.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registercompany.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +35,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +73,8 @@
       <option name="presentableId" value="Default" />
       <updated>1603824140265</updated>
       <workItem from="1603824142397" duration="3542000" />
-      <workItem from="1603833953986" duration="4701000" />
+      <workItem from="1603833953986" duration="4786000" />
+      <workItem from="1603903554286" duration="13398000" />
     </task>
     <servers />
   </component>
@@ -89,6 +91,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="561" y="267" key="Github.ShareDialog" timestamp="1603824906745">

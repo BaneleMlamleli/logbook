@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
             }
         }
     }else{
-        echo "<script type=text/javascript>alert('Error! Database is at empty')</script>";
+        echo "<script type=text/javascript>alert('Error! Database is empty')</script>";
     }
 
     //20201027 - Redirect to the selected user profile page once the user login detail have been correctly verified else it will display an error message
@@ -43,7 +43,7 @@ if(isset($_POST["submit"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script type="text/javascript" src=".\clientsideUserFormValidation.js"></script>
+    <script type="text/javascript" src=".\form_validation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -75,6 +75,13 @@ if(isset($_POST["submit"])){
     <!-- form -->
     <form  action="<?php $_PHP_SELF ?>" method="post">
         <div class="form-group">
+            <label for="lblUserType">Select user type</label>
+            <select class="form-control" id="userType">
+                <option>Intern</option>
+                <option>Mentor</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address">
         </div>
@@ -84,10 +91,10 @@ if(isset($_POST["submit"])){
         </div>
         <div class="form-group row">
             <div class="col">
-                <button onclick="return validation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                <button onclick="return form_validation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
             </div>
             <div class="form-group col">
-                <button type="reset" class="btn btn-primary btn-lg btn-block">Cancel</button>
+                <button type="reset" class="btn btn-primary btn-lg btn-block">Clear</button>
             </div>
         </div>
         <a href="./registeruser.php"><p style="text-align: center;">Register as a new user</p></a>
