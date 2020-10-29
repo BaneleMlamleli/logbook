@@ -20,13 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13cda877-dc54-41cf-8eb0-17683b574912" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/form_validation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/register_company.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbconnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbconnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form_validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/form_validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project_function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registercompany.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registeruser.php" beforeDir="false" afterPath="$PROJECT_DIR$/registeruser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../usermodule_mvc" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -74,7 +71,8 @@
       <updated>1603824140265</updated>
       <workItem from="1603824142397" duration="3542000" />
       <workItem from="1603833953986" duration="4786000" />
-      <workItem from="1603903554286" duration="13398000" />
+      <workItem from="1603903554286" duration="13847000" />
+      <workItem from="1603988274427" duration="14718000" />
     </task>
     <servers />
   </component>
@@ -94,6 +92,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="284" y="-824" key="#Plugins" timestamp="1603988288478">
+      <screen x="-28" y="-900" width="1440" height="870" />
+    </state>
+    <state x="284" y="-824" key="#Plugins/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1603988288478" />
+    <state x="472" y="-710" key="FileChooserDialogImpl" timestamp="1603988322736">
+      <screen x="-28" y="-900" width="1440" height="870" />
+    </state>
+    <state x="472" y="-710" key="FileChooserDialogImpl/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1603988322736" />
     <state x="561" y="267" key="Github.ShareDialog" timestamp="1603824906745">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

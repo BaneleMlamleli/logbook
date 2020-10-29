@@ -91,7 +91,7 @@ if(isset($_POST["submit"])){
         </div>
         <div class="form-group row">
             <div class="col">
-                <button onclick="return form_validation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                <button onclick="return loginValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
             </div>
             <div class="form-group col">
                 <button type="reset" class="btn btn-primary btn-lg btn-block">Clear</button>
