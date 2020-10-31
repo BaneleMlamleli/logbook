@@ -101,18 +101,12 @@ function registerUserValidation() {
 }
 
 function disableFields(){
-    var usrType = document.getElementById("userType").value;
-    switch (usrType){
-        // case 'Intern':
-        //     alert("Intern selected");
-        //     //document.getElementById("demo").innerHTML = "You selected: " + x;
-        //     ;break;
-        case "Mentor":
-            document.getElementById("studentNumber").value = "N/A";
-            document.getElementById("yearOfStudy").value = "N/A";
-            //diabling the fields if the selected user is a mentor
-            document.getElementById("studentNumber").disabled = true;
-            document.getElementById("yearOfStudy").disabled = true;
-            ;break;
+    var usrType = document.getElementById("user_type").value;
+    if(usrType === "Mentor"){
+        document.getElementById("studentNumber").value = "N/A";
+        document.getElementById("yearOfStudy").value = "N/A";
+        //diabling the fields if the selected user is a mentor
+        document.getElementById("studentNumber").disabled = true;
+        document.getElementById("yearOfStudy").disabled = true;
     }
 }

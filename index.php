@@ -13,25 +13,15 @@ if(isset($_POST["submit"])){
     $usrEmail = mysqli_real_escape_string($conn, stripcslashes($_POST["email"]));
     $usrPassword = md5(mysqli_real_escape_string($conn, stripcslashes($_POST["password"])));
 
-    //20201027 - Select sql statement to read all the data read from the database then verify the entered user details
-    $sql = "SELECT * FROM `user`";
+    $sql = "SELECT `usrEmail`, `usrPassword` FROM `user` 
+            WHERE `usrEmail`= {$usrEmail} AND `usrPassword` = {$usrPassword}";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
-    $correctDetails = false;
-    if($resultCheck > 0){
-        while($row = mysqli_fetch_assoc($result)){
-            if(($row['txtEmail'] == $usrEmail) && ($row['txtPassword'] == $usrPassword)){
-                //20201027 - If the login entered details are correct this variable will be true then immediately break out.
-                $correctDetails = true; break;
-            }
-        }
+    if($resultCheck == 1){
+        echo ($_POST["user_type"] == "Mentor")? header("Location: mentor.php") : header("Location: logbook.php");
     }else{
-        echo "<script type=text/javascript>alert('Error! Database is empty')</script>";
+        echo "<script type=text/javascript>alert('Incorrect login details')</script>";
     }
-
-    //20201027 - Redirect to the selected user profile page once the user login detail have been correctly verified else it will display an error message
-    echo ($correctDetails) ? header("Location: userForm.php") : "<script type=text/javascript>alert('Incorrect login details')</script>";
-    // FIX ABOVE LINK PAGE
 }
 ?>
 

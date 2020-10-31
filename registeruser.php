@@ -4,7 +4,7 @@
 $usrType = "";
 $fname = "";
 $lname = "";
-$dob = "";
+$dateOfBirth = "";
 $usrEmail = "";
 $compOfEmployment = "";
 $uni = "";
@@ -15,24 +15,28 @@ $stdntNumber = "";
 
 // checking if the submit button is clicked
 if(isset($_POST["submit"])){
-    //assigned variables with the data from the form
+    //20201030 Created a condition to check check selected user. If it's mentor, set year of study and student number to N/A
+    if ($_POST["user_type"] == "Mentor"){
+        $yrOfStudy = mysqli_real_escape_string($conn, "N/A");
+        $stdntNumber = mysqli_real_escape_string($conn, "N/A");
+    }else{
+        $yrOfStudy = mysqli_real_escape_string($conn, $_POST["yearOfStudy"]);
+        $stdntNumber = mysqli_real_escape_string($conn, $_POST["studentNumber"]);
+    }
     // 20201029 - Added an MD5 encryption function for the password
-    $usrType = mysqli_real_escape_string($conn, $_POST["userType"]);
+    $usrType = mysqli_real_escape_string($conn, $_POST["user_type"]);
     $fname = mysqli_real_escape_string($conn, $_POST["firstname"]);
     $lname = mysqli_real_escape_string($conn, $_POST["lastname"]);
-    $dob = mysqli_real_escape_string($conn, $_POST["dob"]);
+    $dateOfBirth = mysqli_real_escape_string($conn, $_POST["dob"]);
     $usrEmail = mysqli_real_escape_string($conn, $_POST["email"]);
     $compOfEmployment = mysqli_real_escape_string($conn, $_POST["companyOfEmployment"]);
     $uni = mysqli_real_escape_string($conn, $_POST["university"]);
-    $crse = mysqli_real_escape_string($conn, $_POST["courses"]);
+    $crse = mysqli_real_escape_string($conn, $_POST["course"]);
     $qual = mysqli_real_escape_string($conn, $_POST["qualification"]);
-    $yrOfStudy = mysqli_real_escape_string($conn, $_POST["yearOfStudy"]);
-    $stdntNumber = mysqli_real_escape_string($conn, $_POST["studentNumber"]);
     $usrPassword = md5(mysqli_real_escape_string($conn, $_POST["password"]));
     $checkIdExist = 0; // This value will increment by 1 everytime there is a match/similar student number found.
     // 20201029 - Select sql statement to read all the data from the database then check if the entered ID number already exist or not  - Banele
-
-    $sql = "SELECT `usrEmail` FROM `user` WHERE `usrEmail` = " . $usrEmail ;
+    $sql = "SELECT `usrEmail` FROM `user` WHERE `usrEmail` = '" . $usrEmail ."'";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck == 0){
@@ -41,7 +45,7 @@ if(isset($_POST["submit"])){
         $insertUserStmt = "INSERT INTO `user` (`userType`, `usrEmail`, `usrPassword`, `firstname`, `lastname`, `DOB`, `studentNumber`, `university`, `qualification`, `yearOfStudy`, `course`, `companyOfEmployment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
-            mysqli_stmt_bind_param($stmt, "ssssssssssss", $usrType, $usrEmail, $usrPassword, $fname, $lname, $dob, $stdntNumber, $uni, $qual, $yrOfStudy, $crse, $compOfEmployment);
+            mysqli_stmt_bind_param($stmt, "ssssssssssss", $usrType, $usrEmail, $usrPassword, $fname, $lname, $dateOfBirth, $stdntNumber, $uni, $qual, $yrOfStudy, $crse, $compOfEmployment);
             mysqli_stmt_execute($stmt);
             echo "<script type=text/javascript>alert('User successfully registered!')</script>";
         }else{
@@ -50,45 +54,6 @@ if(isset($_POST["submit"])){
     }else{
         echo "<script type=text/javascript>alert('Error! User with this email already exist already exist')</script>";
     }
-
-//    $sql = "SELECT * FROM `user`";
-//    $result = mysqli_query($conn, $sql);
-//    $resultCheck = mysqli_num_rows($result);
-//    if($resultCheck >= 1){
-//        while($row = mysqli_fetch_assoc($result)){
-//            // checking to see if entered ID number exist in the database
-//            if($row['email'] == $usrEmail){
-//                echo "<script type=text/javascript>alert('Error! User with this email already exist already exist')</script>";
-//                $checkIdExist++; break;
-//            }
-//        }
-//        // If there is no ID match the following condition will be executed
-//        if($checkIdExist == 0){
-//            // prepared insert sql statement to insert all the data read from the form
-//            // 20201029 - Fixed the sql statement as it was not working because I was using the backticks signs instead of single quotes in the column names. - Banele
-//            $insertUserStmt = "INSERT INTO `user` (`userType`, `usrEmail`, `usrPassword`, `firstname`, `lastname`, `DOB`, `studentNumber`, `university`, `qualification`, `yearOfStudy`, `course`, `companyOfEmployment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//            $stmt = mysqli_stmt_init($conn);
-//            if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
-//                mysqli_stmt_bind_param($stmt, "ssssssssssss", $usrType, $usrEmail, $usrPassword, $fname, $lname, $dob, $stdntNumber, $uni, $qual, $yrOfStudy, $crse, $compOfEmployment);
-//                mysqli_stmt_execute($stmt);
-//                echo "<script type=text/javascript>alert('User successfully registered!')</script>";
-//            }else{
-//                echo "<script type=text/javascript>alert('Error! User was not registered!')</script>";
-//            }
-//        }
-//    }else{
-//        // prepared insert sql statement to insert all the data read from the form
-//        // 20201029 - Fixed the sql statement as it was not working because I was using the backticks signs instead of single quotes in the column names. - Banele
-//        $insertUserStmt = "INSERT INTO `user` (`userType`, `usrEmail`, `usrPassword`, `firstname`, `lastname`, `DOB`, `studentNumber`, `university`, `qualification`, `yearOfStudy`, `course`, `companyOfEmployment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//        $stmt = mysqli_stmt_init($conn);
-//        if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
-//            mysqli_stmt_bind_param($stmt, "ssssssssssss", $usrType, $usrEmail, $usrPassword, $fname, $lname, $dob, $stdntNumber, $uni, $qual, $yrOfStudy, $crse, $compOfEmployment);
-//            mysqli_stmt_execute($stmt);
-//            echo "<script type=text/javascript>alert('User successfully registered!')</script>";
-//        }else{
-//            echo "<script type=text/javascript>alert('Error! User was not registered!')</script>";
-//        }
-//    }
 }
 ?>
 <!DOCTYPE html>
@@ -127,11 +92,12 @@ if(isset($_POST["submit"])){
 </body>
 <div class="container">
     <!-- registration form -->
-    <form  action="<?php $_PHP_SELF ?>" method="post">
+    <form  action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
         <div class="form-group">
-            <label for="userType">Select user type</label>
-            <select class="form-control" id="userType" onchange="return disableFields()">
+            <label for="user_type">Select user type</label>
+            <select class="form-control" id="user_type" name="user_type" onchange="return disableFields()">
                 <option>Intern</option>
+                <div class="dropdown-divider"></div>
                 <option>Mentor</option>
             </select>
         </div>
@@ -210,6 +176,8 @@ if(isset($_POST["submit"])){
                     <option>Third year</option>
                     <div class="dropdown-divider"></div>
                     <option>Fourth year</option>
+                    <div class="dropdown-divider"></div>
+                    <option>N/A</option>
                 </select>
             </div>
             <!-- Lastname input field -->
