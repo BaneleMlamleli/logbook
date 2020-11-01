@@ -26,6 +26,7 @@
     }
 </style>
 <body>
+<!--Navigation bar-->
 <div class="fixed-top">
     <div class="collapse" id="navbarToggleExternalContent">
         <nav class="navbar navbar-dark bg-dark">
@@ -38,14 +39,8 @@
                 </li>
                 <li class="nav-item">
                     <h5 class="text-white h4">
-                        <a class="nav-link" href="./logbook.php">Logbook</a>
+                        <a class="nav-link" href="./logbook.php">Register Company</a>
                     </h5>
-                </li>
-                <li class="nav-item">
-                    <h5 class="text-white h4">
-                        <a class="nav-link disabled" href="./register_company.php" tabindex="-1" aria-disabled="true">Register company</a>
-                    </h5>
-
                 </li>
             </ul>
         </nav>
@@ -56,7 +51,7 @@
         </button>
     </nav>
 </div>
-
+<!--Jumbotron-->
 <div class="jumbotron jumbotron-background jumbotron-fluid">
     <div class="container jumbotron-text">
         <h1 class="display-4 ">MENTOR</h1>

@@ -83,6 +83,27 @@ if(isset($_POST["submit"])){
     }
 </style>
 <body>
+<!--Navigation bar-->
+<div class="fixed-top">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <nav class="navbar navbar-dark bg-dark">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <h5 class="text-white h4"><a class="nav-link active" href="./index.php">Home</a></h5>
+                </li>
+                <li class="nav-item">
+                    <h5 class="text-white h4"><a class="nav-link" href="./register_company.php">Register Company</a></h5>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+<!--Jumbotron-->
 <div class="jumbotron jumbotron-background jumbotron-fluid">
     <div class="container jumbotron-text">
         <h1 class="display-4 ">NEW USER</h1>

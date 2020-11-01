@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script type="text/javascript" src=".\clientsideUserFormValidation.js"></script>
+    <script type="text/javascript" src=".\form_validation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -19,23 +19,40 @@
         background-attachment: fixed;
         background-size: cover;
     }
-
     .jumbotron-text {
         text-align: center;
         color: white;
         font-size: larger;
     }
-
 </style>
-
 <body>
+<!--Navigation bar-->
+<div class="fixed-top">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <nav class="navbar navbar-dark bg-dark">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <h5 class="text-white h4"><a class="nav-link active" href="./index.php">Home</a></h5>
+                </li>
+                <li class="nav-item">
+                    <h5 class="text-white h4"><a class="nav-link" href="./profile.php">Profile</a></h5>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+<!--Jumbotron-->
 <div class="jumbotron jumbotron-background jumbotron-fluid">
     <div class="container jumbotron-text">
         <h1 class="display-4 ">INTERN</h1>
         <p class="lead">View and download logbook.</p>
     </div>
 </div>
-
 </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue">
