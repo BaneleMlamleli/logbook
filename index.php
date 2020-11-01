@@ -11,13 +11,27 @@ if(isset($_POST["submit"])){
     //20201027 - getting values passed from the login form and sanitise the data to prevent injection
     //20201027 - Added an MD5 encryption function for the password
     $usrEmail = mysqli_real_escape_string($conn, stripcslashes($_POST["email"]));
-    $usrPassword = md5(mysqli_real_escape_string($conn, stripcslashes($_POST["password"])));
-
+//    $usrPassword = md5(mysqli_real_escape_string($conn, stripcslashes($_POST["password"])));
+    echo $_POST["password"];
+    $usrPassword = md5(mysqli_real_escape_string($conn, $_POST["password"]));
+    var_dump($usrPassword);
     $sql = "SELECT `usrEmail`, `usrPassword` FROM `user` 
-            WHERE `usrEmail`= {$usrEmail} AND `usrPassword` = {$usrPassword}";
+            WHERE `usrEmail`= '{$usrEmail}' AND `usrPassword` = '{$usrPassword}'";
     $result = mysqli_query($conn, $sql);
+    echo "\n============================\n";
+    var_dump($result);
+    echo "\n============================\n";
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck == 1){
+        session_start();
+        while($row = mysqli_fetch_assoc($result)){
+            // checking to see if entered ID number exist in the database
+            if(($row['usrEmail'] == $usrEmail) && ($row['usrPassword'] == $usrPassword)){
+                $_SESSION["Email"] = $usrEmail;
+                $_SESSION["Password"] = $usrPassword;
+                break;
+            }
+        }
         echo ($_POST["user_type"] == "Mentor")? header("Location: mentor.php") : header("Location: logbook.php");
     }else{
         echo "<script type=text/javascript>alert('Incorrect login details')</script>";

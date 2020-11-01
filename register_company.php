@@ -138,7 +138,7 @@ if(isset($_POST["submit"])){
         <!-- 20201028 - Added an inline button to clear the form called 'Cancel' - Banele -->
         <div class="form-group row">
             <div class="col">
-                <button onclick="return validation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                <button onclick="return registerCompanyValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
             </div>
             <div class="form-group col">
                 <button type="reset" class="btn btn-primary btn-lg btn-block">Clear</button>

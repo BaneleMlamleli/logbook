@@ -5,7 +5,8 @@ var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 var numericExpression = /^[0-9]+$/;
 var alphaExp = /^[a-zA-Z]+$/;
 
-function validation() {
+function registerCompanyValidation() {
+    alert("registerUserValidation()");
     var reg_number = document.getElementById("companyNumber");
     var compName = document.getElementById("companyName");
     var compType = document.getElementById("companyType");
@@ -39,23 +40,8 @@ function validation() {
     }
 }
 
-function loginValidation(){
-    var usrEmail = document.getElementById("email");
-    var usrPassword = document.getElementById("password");
-
-    if (!(usrEmail.value.trim() == "" || usrPassword.value.trim() == "")) {
-        if (usrEmail.value.match(mailformat)) {
-            return true;
-        }
-        alert("Incorrect email address format");
-        return false;
-    }else{
-        alert("Field cannot be left empty!");
-        return false;
-    }
-}
-
 function registerUserValidation() {
+    alert("registerUserValidation()");
     var name = document.getElementById("firstname");
     var surname = document.getElementById("lastname");
     var dateOfBirth = document.getElementById("dob");
@@ -101,6 +87,7 @@ function registerUserValidation() {
 }
 
 function disableFields(){
+    alert("disableFields()");
     var usrType = document.getElementById("user_type").value;
     if(usrType === "Mentor"){
         document.getElementById("studentNumber").value = "N/A";
@@ -108,5 +95,22 @@ function disableFields(){
         //diabling the fields if the selected user is a mentor
         document.getElementById("studentNumber").disabled = true;
         document.getElementById("yearOfStudy").disabled = true;
+    }
+}
+
+function loginValidation(){
+    alert("loginValidation()");
+    var usrEmail = document.getElementById("email");
+    var usrPassword = document.getElementById("password");
+
+    if (!(usrEmail.value.trim() == "" || usrPassword.value.trim() == "")) {
+        if (usrEmail.value.match(mailformat)) {
+            return true;
+        }
+        alert("Incorrect email address format");
+        return false;
+    }else{
+        alert("Field cannot be left empty!");
+        return false;
     }
 }

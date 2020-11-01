@@ -36,7 +36,7 @@ if(isset($_POST["submit"])){
     $usrPassword = md5(mysqli_real_escape_string($conn, $_POST["password"]));
     $checkIdExist = 0; // This value will increment by 1 everytime there is a match/similar student number found.
     // 20201029 - Select sql statement to read all the data from the database then check if the entered ID number already exist or not  - Banele
-    $sql = "SELECT `usrEmail` FROM `user` WHERE `usrEmail` = '" . $usrEmail ."'";
+    $sql = "SELECT `usrEmail` FROM `user` WHERE `usrEmail` = '{$usrEmail}'";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck == 0){
@@ -92,7 +92,7 @@ if(isset($_POST["submit"])){
 </body>
 <div class="container">
     <!-- registration form -->
-    <form  action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
+    <form  action="<?php $_PHP_SELF ?>" method="post">
         <div class="form-group">
             <label for="user_type">Select user type</label>
             <select class="form-control" id="user_type" name="user_type" onchange="return disableFields()">
@@ -198,7 +198,7 @@ if(isset($_POST["submit"])){
             <!-- 20201029 - Added an inline button to clear the form called 'Cancel' - Banele -->
             <div class="form-group row">
                 <div class="col">
-                    <button onclick="return validation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                    <button onclick="return registerUserValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                 </div>
                 <div class="form-group col">
                     <button type="reset" class="btn btn-primary btn-lg btn-block">Clear</button>
