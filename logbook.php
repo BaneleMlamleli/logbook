@@ -53,6 +53,141 @@
         <p class="lead">Fill your logbook activities.</p>
     </div>
 </div>
+<div class="container">
+    <form action="<?php $_PHP_SELF ?>" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="stopDate">Stop Date</label>
+                <input type="date" class="form-control" id="stopDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="monday">Monday</label>
+            <textarea class="form-control" id="monday" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tuesday">Tuesday</label>
+            <textarea class="form-control" id="tuesday" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="wednesday">Wednesday</label>
+            <textarea class="form-control" id="wednesday" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="thursday">Thursday</label>
+            <textarea class="form-control" id="thursday" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="friday">Friday</label>
+            <textarea class="form-control" id="friday" rows="3"></textarea>
+        </div>
+        <hr>
+        <hr>
+        <div class="form-group">
+            <label for="mentorComments">Comments from Mentor</label>
+            <textarea class="form-control border-primary" id="mentorComments" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="internComments">Comments from Intern</label>
+            <textarea class="form-control border-primary" id="internComments" rows="3"></textarea>
+        </div>
+        <h4>Performance Appraisal (1 - 5)</h4>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Performance Skill</th>
+                <th scope="col">Rated score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Portrayal of skills and knowledge</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Quality of work and attention to detail</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Delivering according to specification</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Demonstration of responsibility</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Motivation for tasks</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Communication</td>
+                <td>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="form-group row">
+            <div class="col">
+                <button onclick="return registerUserValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
+            </div>
+            <div class="col">
+                <button onclick="return registerUserValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit logbook for signing</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue">
