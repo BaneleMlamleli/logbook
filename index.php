@@ -15,7 +15,7 @@ if(isset($_POST["submit"])){
     echo $_POST["password"];
     $usrPassword = md5(mysqli_real_escape_string($conn, $_POST["password"]));
     var_dump($usrPassword);
-    $sql = "SELECT `usrEmail`, `usrPassword` FROM `user` 
+    $sql = "SELECT * FROM `user` 
             WHERE `usrEmail`= '{$usrEmail}' AND `usrPassword` = '{$usrPassword}'";
     $result = mysqli_query($conn, $sql);
     echo "\n============================\n";
@@ -28,8 +28,9 @@ if(isset($_POST["submit"])){
             // checking to see if entered ID number exist in the database
             if(($row['usrEmail'] == $usrEmail) && ($row['usrPassword'] == $usrPassword)){
                 $_SESSION["Email"] = $usrEmail;
-                $_SESSION["Password"] = $usrPassword;
                 $_SESSION["userType"] = $_POST["userType"];
+                $_SESSION["Name"] = $row['firstname'];
+                $_SESSION["Surname"] = $row['lastname'];
                 break;
             }
         }

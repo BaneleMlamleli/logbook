@@ -1,4 +1,88 @@
-<?php ?>
+<?php
+    include_once("dbconnection.php");
+
+    $startDate = "";
+    $stopDate = "";
+    $monday = "";
+    $tuesday = "";
+    $wednesday = "";
+    $thursday = "";
+    $friday = "";
+    $mentorComments = "";
+    $internComments = "";
+    $appraisalPortrayal = "";
+    $appraisalQuality = "";
+    $appraisalDelivery = "";
+    $appraisalDemonstration = "";
+    $appraisalMotivation = "";
+    $appraisalCommunication = "";
+
+    if(isset($_POST["submit"])){
+        $startDate = mysqli_real_escape_string($conn, date("Y-m-d"));
+        $stopDate = mysqli_real_escape_string($conn, date("Y-m-d"));
+        $internSignedDate = mysqli_real_escape_string($conn, date("Y-m-d"));
+        $monday = mysqli_real_escape_string($conn, $_POST[""]);
+        $tuesday = mysqli_real_escape_string($conn, $_POST[""]);
+        $wednesday = mysqli_real_escape_string($conn, $_POST[""]);
+        $thursday = mysqli_real_escape_string($conn, $_POST[""]);
+        $friday = mysqli_real_escape_string($conn, $_POST[""]);
+        $mentorComments = mysqli_real_escape_string($conn, $_POST[""]);
+        $internComments = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalPortrayal = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalQuality = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalDelivery = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalDemonstration = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalMotivation = mysqli_real_escape_string($conn, $_POST[""]);
+        $appraisalCommunication = mysqli_real_escape_string($conn, $_POST[""]);
+
+        $usrEmail = $_SESSION["Email"];
+        $usrType = $_SESSION["userType"];
+        $firstname = $_SESSION["Name"];
+        $lastname = $_SESSION["Surname"];
+
+        $logbookSql = "SELECT * FROM `logbook`
+                WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+        $result = mysqli_query($conn, $logbookSql);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck == 1){
+            // UPDATE the table if there is date already
+            $updateUserStmt = "UPDATE `logbook` SET `start_date`=?, `stop_date`=?, `monday`=?, `tuesday`=?, `wednesday`=?,
+                                `thursday`=?, `friday`=?, `mentor_comments`=?, `intern_comments`=?, `intern_signed_date`=?,
+                                WHERE `firstname`='{$firstname}' AND `lastname`='{$lastname}' AND `email`='{$usrEmail}'";
+            $stmt = mysqli_stmt_init($conn);
+            if(mysqli_stmt_prepare($stmt, $updateUserStmt)){
+                mysqli_stmt_bind_param($stmt, "sssssssssssss",$startDate, $stopDate, $monday, $tuesday, $wednesday, $thursday, $friday,
+                $mentorComments, $internComments, $internSignedDate);
+                mysqli_stmt_execute($stmt);
+                echo "<script type=text/javascript>alert('User details successfully updated')</script>";
+            }else{
+                echo "<script type=text/javascript>alert('Error! User details were not update')</script>";
+            }
+        }else{
+            // INSERT new record if there is no data recorded already
+            $insertUserStmt = "INSERT INTO `logbook` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`,
+                                `quality_of_work_and_attention_to_detail`, `delivering_according_to_specification`,
+                                `demonstration_of_responsibility`, `motivation_for_tasks`, `communication`)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_stmt_init($conn);
+            if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
+                mysqli_stmt_bind_param($stmt, "sssssssssss", $firstname, $lastname, $usrEmail, $appraisalPortrayal,
+                $appraisalQuality, $appraisalDelivery, $appraisalDemonstration, $appraisalMotivation, $appraisalCommunication);
+                mysqli_stmt_execute($stmt);
+                echo "<script type=text/javascript>alert('User details successfully inserted')</script>";
+            }else{
+                echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
+            }
+        }
+
+        $performanceSql = "SELECT * FROM `performance`
+                WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+        $result = mysqli_query($conn, $logbookSql);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck == 1){
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en" class="smart-style-0">
 <head>
