@@ -3,11 +3,11 @@
 
     $startDate = "";
     $stopDate = "";
-    $monday = "";
-    $tuesday = "";
-    $wednesday = "";
-    $thursday = "";
-    $friday = "";
+    $mon = "";
+    $tue = "";
+    $wed= "";
+    $thu = "";
+    $fri = "";
     $mentorComments = "";
     $internComments = "";
     $appraisalPortrayal = "";
@@ -21,19 +21,19 @@
         $startDate = mysqli_real_escape_string($conn, date("Y-m-d"));
         $stopDate = mysqli_real_escape_string($conn, date("Y-m-d"));
         $internSignedDate = mysqli_real_escape_string($conn, date("Y-m-d"));
-        $monday = mysqli_real_escape_string($conn, $_POST[""]);
-        $tuesday = mysqli_real_escape_string($conn, $_POST[""]);
-        $wednesday = mysqli_real_escape_string($conn, $_POST[""]);
-        $thursday = mysqli_real_escape_string($conn, $_POST[""]);
-        $friday = mysqli_real_escape_string($conn, $_POST[""]);
-        $mentorComments = mysqli_real_escape_string($conn, $_POST[""]);
-        $internComments = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalPortrayal = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalQuality = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalDelivery = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalDemonstration = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalMotivation = mysqli_real_escape_string($conn, $_POST[""]);
-        $appraisalCommunication = mysqli_real_escape_string($conn, $_POST[""]);
+        $mon = mysqli_real_escape_string($conn, $_POST["monday"]);
+        $tue = mysqli_real_escape_string($conn, $_POST["tuesday"]);
+        $wed = mysqli_real_escape_string($conn, $_POST["wednesday"]);
+        $thu = mysqli_real_escape_string($conn, $_POST["thursday"]);
+        $fri = mysqli_real_escape_string($conn, $_POST["friday"]);
+        $mentorComments = mysqli_real_escape_string($conn, $_POST["mentorComments"]);
+        $internComments = mysqli_real_escape_string($conn, $_POST["internComments"]);
+        $appraisalPortrayal = mysqli_real_escape_string($conn, $_POST["appraisalPortrayal"]);
+        $appraisalQuality = mysqli_real_escape_string($conn, $_POST["appraisalQuality"]);
+        $appraisalDelivery = mysqli_real_escape_string($conn, $_POST["appraisalDelivery"]);
+        $appraisalDemonstration = mysqli_real_escape_string($conn, $_POST["appraisalDemonstration"]);
+        $appraisalMotivation = mysqli_real_escape_string($conn, $_POST["appraisalMotivation"]);
+        $appraisalCommunication = mysqli_real_escape_string($conn, $_POST["appraisalCommunication"]);
 
         $usrEmail = $_SESSION["Email"];
         $usrType = $_SESSION["userType"];
@@ -47,11 +47,11 @@
         if($resultCheck == 1){
             // UPDATE the table if there is date already
             $updateUserStmt = "UPDATE `logbook` SET `start_date`=?, `stop_date`=?, `monday`=?, `tuesday`=?, `wednesday`=?,
-                                `thursday`=?, `friday`=?, `mentor_comments`=?, `intern_comments`=?, `intern_signed_date`=?,
+                                `thursday`=?, `friday`=?, `mentor_comments`=?, `intern_comments`=?, `intern_signed_date`=?
                                 WHERE `firstname`='{$firstname}' AND `lastname`='{$lastname}' AND `email`='{$usrEmail}'";
             $stmt = mysqli_stmt_init($conn);
             if(mysqli_stmt_prepare($stmt, $updateUserStmt)){
-                mysqli_stmt_bind_param($stmt, "sssssssssssss",$startDate, $stopDate, $monday, $tuesday, $wednesday, $thursday, $friday,
+                mysqli_stmt_bind_param($stmt, "sssssssssssss",$startDate, $stopDate, $mon, $tue, $wed, $thu, $fri,
                 $mentorComments, $internComments, $internSignedDate);
                 mysqli_stmt_execute($stmt);
                 echo "<script type=text/javascript>alert('User details successfully updated')</script>";
@@ -60,7 +60,7 @@
             }
         }else{
             // INSERT new record if there is no data recorded already
-            $insertUserStmt = "INSERT INTO `logbook` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`,
+            $insertUserStmt = "INSERT INTO `performance` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`,
                                 `quality_of_work_and_attention_to_detail`, `delivering_according_to_specification`,
                                 `demonstration_of_responsibility`, `motivation_for_tasks`, `communication`)
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -73,13 +73,6 @@
             }else{
                 echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
             }
-        }
-
-        $performanceSql = "SELECT * FROM `performance`
-                WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
-        $result = mysqli_query($conn, $logbookSql);
-        $resultCheck = mysqli_num_rows($result);
-        if($resultCheck == 1){
         }
     }
 ?>
@@ -139,46 +132,86 @@
 </div>
 <div class="container">
     <form action="<?php $_PHP_SELF ?>" method="post">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="startDate">Start Date</label>
-                <input type="date" class="form-control" id="startDate">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="stopDate">Stop Date</label>
-                <input type="date" class="form-control" id="stopDate">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="monday">Monday</label>
-            <textarea class="form-control" id="monday" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="tuesday">Tuesday</label>
-            <textarea class="form-control" id="tuesday" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="wednesday">Wednesday</label>
-            <textarea class="form-control" id="wednesday" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="thursday">Thursday</label>
-            <textarea class="form-control" id="thursday" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="friday">Friday</label>
-            <textarea class="form-control" id="friday" rows="3"></textarea>
-        </div>
-        <hr>
-        <hr>
-        <div class="form-group">
-            <label for="mentorComments">Comments from Mentor</label>
-            <textarea class="form-control border-primary" id="mentorComments" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="internComments">Comments from Intern</label>
-            <textarea class="form-control border-primary" id="internComments" rows="3"></textarea>
-        </div>
+        <?php
+            session_start();
+            $usrEmail = $_SESSION["Email"];
+            $usrType = $_SESSION["userType"];
+            $firstname = $_SESSION["Name"];
+            $lastname = $_SESSION["Surname"];
+
+            $dt =  mysqli_real_escape_string($conn, date("Y-m-d"));
+
+            //=======================================================================================
+            $logbookSql = "SELECT * FROM `logbook`
+                    WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+            $result = mysqli_query($conn, $logbookSql);
+            $resultCheck = mysqli_num_rows($result);
+            //if the database is empty then we insert the data
+            if(!($resultCheck == 1)){
+                // INSERT new record if there is no data recorded already
+                $insertUserStmt = "INSERT INTO `logbook` (`firstname`, `lastname`, `email`, `start_date`, `stop_date`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `mentor_comments`, `intern_comments`, `intern_signed_date`, `mentor_signed_date`, `status`)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = mysqli_stmt_init($conn);
+                if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
+                    mysqli_stmt_bind_param($stmt, "sssssssssssssss",strtolower(""), strtolower(""), "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty");
+                    mysqli_stmt_execute($stmt);
+                    echo "<script type=text/javascript>alert('User details successfully inserted')</script>";
+                }else{
+                    echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
+                }
+            }
+            //=======================================================================================
+
+            $logbookSql = "SELECT * FROM `logbook`
+                    WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+            $logbookResult = mysqli_query($conn, $logbookSql);
+            $logbookResultCheck = mysqli_num_rows($logbookResult);
+
+            if($logbookResultCheck > 0){
+                while($row = mysqli_fetch_assoc($logbookResult)){
+                    echo " <div class=\"form-row\">
+                                <div class=\"form-group col-md-6\">
+                                    <label for=\"startDate\">Start Date</label>
+                                    <input type=\"date\" class=\"form-control\" id=\"startDate\" value=".$row['startDate'].">
+                                </div>
+                                <div class=\"form-group col-md-6\">
+                                    <label for=\"stopDate\">Stop Date</label>
+                                    <input type=\"date\" class=\"form-control\" id=\"stopDate\" value=".$row['stopDate'].">
+                                </div>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"monday\">Monday</label>
+                                <textarea class=\"form-control\" id=\"monday\" rows=\"3\">".$row['monday']."</textarea>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"tuesday\">Tuesday</label>
+                                <textarea class=\"form-control\" id=\"tuesday\" rows=\"3\">".$row['tuesday']."</textarea>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"wednesday\">Wednesday</label>
+                                <textarea class=\"form-control\" id=\"wednesday\" rows=\"3\">".$row['wednesday']."</textarea>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"thursday\">Thursday</label>
+                                <textarea class=\"form-control\" id=\"thursday\" rows=\"3\">".$row['thursday']."</textarea>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"friday\">Friday</label>
+                                <textarea class=\"form-control\" id=\"friday\" rows=\"3\">".$row['friday']."</textarea>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class=\"form-group\">
+                                <label for=\"mentorComments\">Comments from Mentor</label>
+                                <textarea class=\"form-control border-primary\" id=\"mentorComments\" rows=\"3\">".$row['mentorComments']."</textarea>
+                            </div>
+                            <div class=\"form-group\">
+                                <label for=\"internComments\">Comments from Intern</label>
+                                <textarea class=\"form-control border-primary\" id=\"internComments\" rows=\"3\">".$row['internComments']."</textarea>
+                            </div>";
+                }
+            }
+        ?>
         <h4>Performance Appraisal (1 - 5)</h4>
         <table class="table">
             <thead class="thead-dark">

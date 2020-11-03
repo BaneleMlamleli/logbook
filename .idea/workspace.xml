@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="13cda877-dc54-41cf-8eb0-17683b574912" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/logbook.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +76,7 @@
       <workItem from="1604181996247" duration="12434000" />
       <workItem from="1604227356524" duration="20015000" />
       <workItem from="1604315627342" duration="8940000" />
+      <workItem from="1604425898113" duration="8937000" />
     </task>
     <servers />
   </component>
@@ -128,5 +128,9 @@
       <screen x="-28" y="-900" width="1440" height="870" />
     </state>
     <state x="509" y="-551" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1604269370002" />
+    <state x="355" y="-718" width="672" height="678" key="search.everywhere.popup" timestamp="1604440198092">
+      <screen x="-28" y="-900" width="1440" height="870" />
+    </state>
+    <state x="355" y="-718" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/-28.-900.1440.870@-28.-900.1440.870" timestamp="1604440198092" />
   </component>
 </project>
