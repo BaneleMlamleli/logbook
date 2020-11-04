@@ -1,25 +1,7 @@
 <?php
     include_once("dbconnection.php");
 
-    $startDate = "";
-    $stopDate = "";
-    $mon = "";
-    $tue = "";
-    $wed= "";
-    $thu = "";
-    $fri = "";
-    $mentorComments = "";
-    $internComments = "";
-    $appraisalPortrayal = "";
-    $appraisalQuality = "";
-    $appraisalDelivery = "";
-    $appraisalDemonstration = "";
-    $appraisalMotivation = "";
-    $appraisalCommunication = "";
-
-    if(isset($_POST["submit"])){
-        $startDate = mysqli_real_escape_string($conn, date("Y-m-d"));
-        $stopDate = mysqli_real_escape_string($conn, date("Y-m-d"));
+    if(isset($_GET["update"])){
         $internSignedDate = mysqli_real_escape_string($conn, date("Y-m-d"));
         $mon = mysqli_real_escape_string($conn, $_POST["monday"]);
         $tue = mysqli_real_escape_string($conn, $_POST["tuesday"]);
@@ -40,39 +22,32 @@
         $firstname = $_SESSION["Name"];
         $lastname = $_SESSION["Surname"];
 
-        $logbookSql = "SELECT * FROM `logbook`
-                WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
-        $result = mysqli_query($conn, $logbookSql);
-        $resultCheck = mysqli_num_rows($result);
-        if($resultCheck == 1){
-            // UPDATE the table if there is date already
-            $updateUserStmt = "UPDATE `logbook` SET `start_date`=?, `stop_date`=?, `monday`=?, `tuesday`=?, `wednesday`=?,
-                                `thursday`=?, `friday`=?, `mentor_comments`=?, `intern_comments`=?, `intern_signed_date`=?
-                                WHERE `firstname`='{$firstname}' AND `lastname`='{$lastname}' AND `email`='{$usrEmail}'";
-            $stmt = mysqli_stmt_init($conn);
-            if(mysqli_stmt_prepare($stmt, $updateUserStmt)){
-                mysqli_stmt_bind_param($stmt, "sssssssssssss",$startDate, $stopDate, $mon, $tue, $wed, $thu, $fri,
-                $mentorComments, $internComments, $internSignedDate);
-                mysqli_stmt_execute($stmt);
-                echo "<script type=text/javascript>alert('User details successfully updated')</script>";
-            }else{
-                echo "<script type=text/javascript>alert('Error! User details were not update')</script>";
-            }
+        // UPDATE the table if there is date already
+        $updateUserStmt = "UPDATE `logbook` SET `monday`=?, `tuesday`=?, `wednesday`=?,
+                            `thursday`=?, `friday`=?, `mentor_comments`=?, `intern_comments`=?, `intern_signed_date`=?
+                            WHERE `firstname`='{$firstname}' AND `lastname`='{$lastname}' AND `email`='{$usrEmail}'";
+        $stmt = mysqli_stmt_init($conn);
+        if(mysqli_stmt_prepare($stmt, $updateUserStmt)){
+            mysqli_stmt_bind_param($stmt, "ssssssss",$mon, $tue, $wed, $thu, $fri, $mentorComments, $internComments, $internSignedDate);
+            mysqli_stmt_execute($stmt);
+            echo "<script type=text/javascript>alert('Logbook entries successfully updated')</script>";
         }else{
-            // INSERT new record if there is no data recorded already
-            $insertUserStmt = "INSERT INTO `performance` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`,
-                                `quality_of_work_and_attention_to_detail`, `delivering_according_to_specification`,
-                                `demonstration_of_responsibility`, `motivation_for_tasks`, `communication`)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = mysqli_stmt_init($conn);
-            if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
-                mysqli_stmt_bind_param($stmt, "sssssssssss", $firstname, $lastname, $usrEmail, $appraisalPortrayal,
-                $appraisalQuality, $appraisalDelivery, $appraisalDemonstration, $appraisalMotivation, $appraisalCommunication);
-                mysqli_stmt_execute($stmt);
-                echo "<script type=text/javascript>alert('User details successfully inserted')</script>";
-            }else{
-                echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
-            }
+            echo "<script type=text/javascript>alert('Error! Logbook entries were not update')</script>";
+        }
+
+    // INSERT new record if there is no data recorded already
+        $insertUserStmt = "INSERT INTO `performance` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`,
+                            `quality_of_work_and_attention_to_detail`, `delivering_according_to_specification`,
+                            `demonstration_of_responsibility`, `motivation_for_tasks`, `communication`)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn);
+        if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
+            mysqli_stmt_bind_param($stmt, "sssssssssss", $firstname, $lastname, $usrEmail, $appraisalPortrayal,
+            $appraisalQuality, $appraisalDelivery, $appraisalDemonstration, $appraisalMotivation, $appraisalCommunication);
+            mysqli_stmt_execute($stmt);
+            echo "<script type=text/javascript>alert('User details successfully inserted')</script>";
+        }else{
+            echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
         }
     }
 ?>
@@ -84,7 +59,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script type="text/javascript" src=".\clientsideUserFormValidation.js"></script>
+    <script type="text/javascript" src=".\form_validation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -131,7 +106,7 @@
     </div>
 </div>
 <div class="container">
-    <form action="<?php $_PHP_SELF ?>" method="post">
+    <form action="<?php $_PHP_SELF ?>" method="GET">
         <?php
             session_start();
             $usrEmail = $_SESSION["Email"];
@@ -140,8 +115,13 @@
             $lastname = $_SESSION["Surname"];
 
             $dt =  mysqli_real_escape_string($conn, date("Y-m-d"));
+            $startDt = date("Y-m-d");
+            $stopDt = date('Y-m-d', strtotime(date("Y-m-d"). ' + 5 days'));
+            $empty = "empty";
+            $defValue = 0;
 
             //=======================================================================================
+            //INSERTING INTO logbook table
             $logbookSql = "SELECT * FROM `logbook`
                     WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
             $result = mysqli_query($conn, $logbookSql);
@@ -150,14 +130,33 @@
             if(!($resultCheck == 1)){
                 // INSERT new record if there is no data recorded already
                 $insertUserStmt = "INSERT INTO `logbook` (`firstname`, `lastname`, `email`, `start_date`, `stop_date`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `mentor_comments`, `intern_comments`, `intern_signed_date`, `mentor_signed_date`, `status`)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if(mysqli_stmt_prepare($stmt, $insertUserStmt)){
-                    mysqli_stmt_bind_param($stmt, "sssssssssssssss",strtolower(""), strtolower(""), "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty");
+                    mysqli_stmt_bind_param($stmt, "sssssssssssssss",$firstname, $lastname, $usrEmail, $startDt, $stopDt, $empty, $empty, $empty, $empty, $empty, $empty, $empty, $dt, $dt, $empty);
                     mysqli_stmt_execute($stmt);
-                    echo "<script type=text/javascript>alert('User details successfully inserted')</script>";
+                    echo "<script type=text/javascript>alert('Initial logbook successfully inserted')</script>";
                 }else{
-                    echo "<script type=text/javascript>alert('Error! User details were not inserted')</script>";
+                    echo "<script type=text/javascript>alert('Error! Initial logbook entries are not inserted')</script>";
+                }
+            }
+
+            // INSERTING INTO performance table
+            $performanceSql = "SELECT * FROM `performance`
+                        WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+            $performanceSql = mysqli_query($conn, $performanceSql);
+            $performanceResultCheck = mysqli_num_rows($performanceSql);
+            //if the database is empty then we insert the data
+            if(!($performanceResultCheck == 1)){
+                $insertPerformanceStmt = "INSERT INTO `performance` (`firstname`, `lastname`, `email`, `portrayal_of_skills_and_knowledge`, `quality_of_work_and_attention_to_detail`, `delivering_according_to_specification`, `demonstration_of_responsibility`, `motivation_for_tasks`, `communication`)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $performanceStmt = mysqli_stmt_init($conn);
+                if(mysqli_stmt_prepare($performanceStmt, $insertPerformanceStmt)){
+                    mysqli_stmt_bind_param($performanceStmt, "sssiiiiii", $firstname, $lastname, $usrEmail, $defValue, $defValue, $defValue, $defValue, $defValue, $defValue);
+                    mysqli_stmt_execute($performanceStmt);
+                    echo "<script type=text/javascript>alert('Initial performance db successfully inserted')</script>";
+                }else{
+                    echo "<script type=text/javascript>alert('Error! Initial performance db were not inserted')</script>";
                 }
             }
             //=======================================================================================
@@ -172,11 +171,11 @@
                     echo " <div class=\"form-row\">
                                 <div class=\"form-group col-md-6\">
                                     <label for=\"startDate\">Start Date</label>
-                                    <input type=\"date\" class=\"form-control\" id=\"startDate\" value=".$row['startDate'].">
+                                    <input type=\"date\" class=\"form-control\" id=\"startDate\" disabled value=".$row['start_date'].">
                                 </div>
                                 <div class=\"form-group col-md-6\">
                                     <label for=\"stopDate\">Stop Date</label>
-                                    <input type=\"date\" class=\"form-control\" id=\"stopDate\" value=".$row['stopDate'].">
+                                    <input type=\"date\" class=\"form-control\" id=\"stopDate\" disabled value=".$row['stop_date'].">
                                 </div>
                             </div>
                             <div class=\"form-group\">
@@ -203,11 +202,11 @@
                             <hr>
                             <div class=\"form-group\">
                                 <label for=\"mentorComments\">Comments from Mentor</label>
-                                <textarea class=\"form-control border-primary\" id=\"mentorComments\" rows=\"3\">".$row['mentorComments']."</textarea>
+                                <textarea class=\"form-control border-primary\" id=\"mentorComments\" rows=\"3\">".$row['mentor_comments']."</textarea>
                             </div>
                             <div class=\"form-group\">
                                 <label for=\"internComments\">Comments from Intern</label>
-                                <textarea class=\"form-control border-primary\" id=\"internComments\" rows=\"3\">".$row['internComments']."</textarea>
+                                <textarea class=\"form-control border-primary\" id=\"internComments\" rows=\"3\">".$row['intern_comments']."</textarea>
                             </div>";
                 }
             }
@@ -300,7 +299,7 @@
                 <button onclick="return registerUserValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
             </div>
             <div class="col">
-                <button onclick="return registerUserValidation()" type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit logbook for signing</button>
+                <button onclick="return registerUserValidation()" type="submit" name="submit_for_signing" class="btn btn-primary btn-lg btn-block">Submit logbook for signing</button>
             </div>
         </div>
     </form>
