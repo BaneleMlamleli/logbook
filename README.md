@@ -1,0 +1,8 @@
+# logbook
+
+After experiencing the difficulties of using the physical hard copies of a logbook during our Inservice training we saw the necessity to create a digital version of this document with additional features that we discovered to be a necessity. The logbook is a blend of broad-spectrum guidelines for all students and faculties, and a journal to record all activities or accomplishments throughout the student’s Inservice or internship duration.
+- This will serve as an important mechanism for the Coordinator/Supervisor to evaluate a student's assertiveness and capability and to observe the status of the student's projects during the semester.
+- Students will be obligated to write clearly all forms of activities accomplished and then to summarize their work every week through the logbook, giving the Coordinator or supervisor a full and clear insight of every student’s successes and where adjustments are to be made.
+- This is essential since part of the final marks received by the students on their projects / assignments / group work will be based on what they have recorded in this logbook.
+- Students are very much encouraged to conserve a separate file/folder to compile all their research/printouts/datasheets as a complement to this logbook. Finally, the logbook helps in eradication of paper-based log sheets and by doing so, this will also contribute to the idea of going green in the ecosystem which will serve as great preservation to the conservation of trees for a greener environment.
+- The Mentor will be able to comment on the progress of the student and provide weekly feedback to the student
