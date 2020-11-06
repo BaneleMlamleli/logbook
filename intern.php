@@ -92,25 +92,25 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">xx - Xxxxxx - xxxx</th>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Xxxxx Xxxxx</td>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Locked, Unlocked, Pending, Signed, Cancelled</td>
+                    <th scope="row">12 - Oct - 2020</th>
+                    <td>17 - Oct - 2020</td>
+                    <td>Michael Booty</td>
+                    <td>18 - Oct - 2020</td>
+                    <td>Signed</td>
                 </tr>
                 <tr>
-                    <th scope="row">xx - Xxxxxx - xxxx</th>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Xxxxx Xxxxx</td>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Locked, Unlocked, Pending, Signed, Cancelled</td>
+                    <th scope="row">15 - Oct - 2020</th>
+                    <td>20 - Oct - 2020</td>
+                    <td>James Cutter</td>
+                    <td>22 - Oct - 2020</td>
+                    <td>Signed</td>
                 </tr>
                 <tr>
-                    <th scope="row">xx - Xxxxxx - xxxx</th>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Xxxxx Xxxxx</td>
-                    <td>xx - Xxxxxx - xxxx</td>
-                    <td>Locked, Unlocked, Pending, Signed, Cancelled</td>
+                    <th scope="row">20 - Oct - 2020</th>
+                    <td>25 - Oct - 2020</td>
+                    <td>Siphosethu Mlamleli</td>
+                    <td>27 - Oct - 2020</td>
+                    <td>Signed</td>
                 </tr>
                 </tbody>
             </table>
