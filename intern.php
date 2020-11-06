@@ -1,4 +1,4 @@
-<?php ?>
+<?php include_once("dbconnection.php"); ?>
 <!DOCTYPE html>
 <html lang="en" class="smart-style-0">
 <head>
@@ -60,14 +60,32 @@
             <div class="col-md-4">
                 <img src="./assets/image1.png" class="card-img" alt="image placeholder" style="height: 12em; width: 15em">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Title</p>
-                    <p class="card-text">company name</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+            <?php
+                session_start();
+                $usrEmail = $_SESSION["Email"];
+                $usrType = $_SESSION["userType"];
+                $firstname = $_SESSION["Name"];
+                $lastname = $_SESSION["Surname"];
+
+                $sql = "SELECT * FROM `logbook`
+                        WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
+                if($resultCheck > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<div class=\"col-md-8\">
+                                <div class=\"card-body\">
+                                    <h5 class=\"card-title\">".$row['firstname']." ".$row['lastname']."</h5>
+                                    <p class=\"card-text\">Position: ".$usrType."</p>
+                                    <p class=\"card-text\">Company: ".ucwords(explode('@', explode('.', $usrEmail)[0])[1])."</p>
+                                    <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>";
+                    }
+                }else{
+                    echo "<script type=text/javascript>alert('Error! No data to read from Database.')</script>";
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -80,37 +98,44 @@
         <div class="card-body ">
             <button type="button" class="btn btn-primary btn-lg btn-block">Download logbook</button>
             <p></p>
-            <table class="table">
+            <table id="internLogbooks" name="internLogbooks" class="table table-striped container container-fluid">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Start date</th>
                     <th scope="col">Stop date</th>
-                    <th scope="col">Signed by</th>
-                    <th scope="col">Date signed</th>
+                    <th scope="col">Intern signed date</th>
+                    <th scope="col">Mentor signed date</th>
+                    <th scope="col">Signed by (Mentor)</th>
                     <th scope="col">Status</th>
                 </tr>
                 </thead>
-                <tbody>
                 <tr>
-                    <th scope="row">12 - Oct - 2020</th>
-                    <td>17 - Oct - 2020</td>
-                    <td>Michael Booty</td>
-                    <td>18 - Oct - 2020</td>
-                    <td>Signed</td>
-                </tr>
-                <tr>
-                    <th scope="row">15 - Oct - 2020</th>
-                    <td>20 - Oct - 2020</td>
-                    <td>James Cutter</td>
-                    <td>22 - Oct - 2020</td>
-                    <td>Signed</td>
-                </tr>
-                <tr>
-                    <th scope="row">20 - Oct - 2020</th>
-                    <td>25 - Oct - 2020</td>
-                    <td>Siphosethu Mlamleli</td>
-                    <td>27 - Oct - 2020</td>
-                    <td>Signed</td>
+                    <!-- 20201106 - Selecting all data from the database and display it on the table - Banele -->
+                    <?php
+                        $usrEmail = $_SESSION["Email"];
+                        $usrType = $_SESSION["userType"];
+                        $firstname = $_SESSION["Name"];
+                        $lastname = $_SESSION["Surname"];
+                        $randomMentors = array("James Cutter", "Looney Tunes", "Siphosethu Mhlanga", "Cipher Breaker", "Tania Mlamleli", "Caroline Mokhoathi", "Michael Booty", "Last Born");
+
+                        $logbookSql = "SELECT * FROM `logbook`
+                        WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+                        $logbookResult = mysqli_query($conn, $logbookSql);
+                        $logbookResultCheck = mysqli_num_rows($logbookResult);
+                        if($logbookResultCheck > 0){
+                            while($row = mysqli_fetch_assoc($logbookResult)){
+                                echo "<tr><th scope=\"row\">".$row['start_date']."</th>".
+                                    "<td>".$row['stop_date']."</td>".
+                                    "<td>".$row['intern_signed_date']."</td>".
+                                    "<td>".$row['mentor_signed_date']."</td>".
+                                    "<td>".$randomMentors[rand(0,7)]."</td>".
+                                    "<td>".$row['status']."</td>".
+                                    "</tr>";
+                            }
+                        }else{
+                            echo "<script type=text/javascript>alert('Error! No data to read from Database.')</script>";
+                        }
+                    ?>
                 </tr>
                 </tbody>
             </table>

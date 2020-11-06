@@ -1,4 +1,4 @@
-<?php ?>
+<?php include_once("dbconnection.php"); ?>
 <!DOCTYPE html>
 <div lang="en" class="smart-style-0">
 <head>
@@ -65,14 +65,32 @@
             <div class="col-md-4">
                 <img src="./assets/image1.png" class="card-img" alt="image placeholder" style="height: 12em; width: 15em">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Title</p>
-                    <p class="card-text">company name</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+            <?php
+                session_start();
+                $usrEmail = $_SESSION["Email"];
+                $usrType = $_SESSION["userType"];
+                $firstname = $_SESSION["Name"];
+                $lastname = $_SESSION["Surname"];
+
+                $sql = "SELECT * FROM `logbook`
+                            WHERE `email`= '{$usrEmail}' AND `firstname` = '{$firstname}' AND `lastname` = '{$lastname}'";
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
+                if($resultCheck > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<div class=\"col-md-8\">
+                                    <div class=\"card-body\">
+                                        <h5 class=\"card-title\">".$row['firstname']." ".$row['lastname']."</h5>
+                                        <p class=\"card-text\">Position: ".$usrType."</p>
+                                        <p class=\"card-text\">Company: ".ucwords(explode('@', explode('.', $usrEmail)[0])[1])."</p>
+                                        <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>";
+                    }
+                }else{
+                    echo "<script type=text/javascript>alert('Error! No data to read from Database.')</script>";
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -141,24 +159,8 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">Xxxx</th>
-                            <td>Xxxx</td>
-                            <td>xx - Xxxx - xxxx</td>
-                            <td>Xxxxx Xxxxx</td>
-                            <td>xx - Xxxxxx - xxxx</td>
-                            <td>
-                                <select class="form-control form-control-sm">
-                                    <option>Approved</option>
-                                    <option>Declined</option>
-                                    <option>Enabled</option>
-                                    <option>Disabled</option>
-                                </select>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
         </div>
@@ -219,22 +221,8 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">Xxxx</th>
-                            <td>Xxxx</td>
-                            <td>Xxxxx Xxxxx</td>
-                            <td>xx - Xxxxxx - xxxx</td>
-                            <td>
-                                <select class="form-control form-control-sm">
-                                    <option>Locked</option>
-                                    <option>Unlocked</option>
-                                    <option>Signed</option>
-                                </select>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
         </div>

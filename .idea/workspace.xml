@@ -22,6 +22,7 @@
     <list default="true" id="13cda877-dc54-41cf-8eb0-17683b574912" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intern.php" beforeDir="false" afterPath="$PROJECT_DIR$/intern.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mentor.php" beforeDir="false" afterPath="$PROJECT_DIR$/mentor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start_session.php" beforeDir="false" afterPath="$PROJECT_DIR$/start_session.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +83,7 @@
       <workItem from="1604519237191" duration="12790000" />
       <workItem from="1604589724806" duration="594000" />
       <workItem from="1604598970724" duration="10044000" />
-      <workItem from="1604679190588" duration="3865000" />
+      <workItem from="1604679190588" duration="9937000" />
     </task>
     <servers />
   </component>
