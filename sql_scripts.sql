@@ -1,0 +1,6 @@
+CREATE TABLE `ebdb`.`user` ( `usrType` VARCHAR(25) NOT NULL , `usrEmail` VARCHAR(25) NOT NULL , `usrPassword` VARCHAR(25) NOT NULL , `fname` VARCHAR(25) NOT NULL , `lname` VARCHAR(25) NOT NULL , `dateOfBirth` VARCHAR(25) NOT NULL , `stdntNumber` VARCHAR(25) NOT NULL , `uni` VARCHAR(25) NOT NULL , `qual` VARCHAR(25) NOT NULL , `yrOfStudy` VARCHAR(25) NOT NULL , `crse` VARCHAR(25) NOT NULL , `compOfEmployment` VARCHAR(25) NOT NULL ) ENGINE = InnoDB;
+
+
+CREATE TABLE `ebdb`.`company` ( `reg_number` VARCHAR(25) NOT NULL , `name` VARCHAR(25) NOT NULL , `type` VARCHAR(25) NOT NULL , `email` VARCHAR(25) NOT NULL , `yearFounded` INT(25) NOT NULL , `CEO` VARCHAR(25) NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `ebdb`.`logbook` ( `mon` VARCHAR(512) NOT NULL , `tue` VARCHAR(512) NOT NULL , `wed` VARCHAR(512) NOT NULL , `thu` VARCHAR(512) NOT NULL , `fri` VARCHAR(512) NOT NULL , `mentorComments` VARCHAR(512) NOT NULL , `internComments` VARCHAR(512) NOT NULL , `internSignedDate` VARCHAR(512) NOT NULL , `status` VARCHAR(512) NOT NULL , `appraisalPortrayal` INT NOT NULL , `appraisalQuality` INT NOT NULL , `appraisalDelivery` INT NOT NULL , `appraisalDemonstration` INT NOT NULL , `appraisalMotivation` INT NOT NULL , `appraisalCommunication` INT NOT NULL ) ENGINE = InnoDB;
